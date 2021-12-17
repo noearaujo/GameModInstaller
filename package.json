@@ -1,0 +1,53 @@
+{
+  "name": "gmi",
+  "version": "1.0.0",
+  "description": "Game Mod Installer",
+  "main": "main.js",
+  "scripts": {
+    "test": "test",
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/noearaujo/GameMod-Installer.git"
+  },
+  "keywords": [
+    "mb",
+    "r13b",
+    "mods",
+    "modules",
+    "game"
+  ],
+  "author": "Noé Araújo",
+  "license": "GPL",
+  "bugs": {
+    "url": "https://github.com/noearaujo/GameMod-Installer/issues"
+  },
+  "homepage": "https://github.com/noearaujo/GameMod-Installer#readme",
+  "build": {
+    "appId": "com.gmi.r13b",
+    "productName": "gmi",
+    "win": {
+      "artifactName": "${productName}_setup-v${version}.${ext}",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["ia32"]
+        }
+      ]
+    },
+    "nsis":{
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "shortcutName": "Game Mod Installer",
+      "perMachine": true
+    }
+  },
+  "devDependencies": {
+    "electron": "^16.0.5",
+    "electron-builder": "^22.14.5"
+  }
+}
