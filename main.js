@@ -1,21 +1,21 @@
-const {app, BrowserWindow, ipcMain } = require('electron')
-const path = require('path')
+const {app, BrowserWindow, ipcMain } = require('electron');
+const path = require('path');
 
 const createWindow = () => {
     const win = new BrowserWindow({
-        width: 800,
+        width: 700,
         height: 400,
         frame: false,
         autoHideMenuBar: true,
         darkTheme: true,
         resizable: false,
+        backgroundColor: '#1e1f1e',
         webPreferences: {
-            nodeIntegration: true,
-            contextIsolation: false,
             preload: path.join(__dirname, 'preload.js')
         }
     })
-    win.loadFile('pages/index.html')
+
+    win.loadFile('pages/index.html');
 
     ipcMain.on("minimizeApp", () => {
         console.log("minimizando a janela");
@@ -24,7 +24,7 @@ const createWindow = () => {
 
     ipcMain.on("closeApp", () => {
         console.log("fechando a janela");
-        win.close();
+        app.quit()
     })
 }
 

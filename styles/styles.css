@@ -1,10 +1,10 @@
 body{
-    background-color: #282a36;
     color: #f8f8f2;
-    font-family: "Segoe UI", serif;
+    font-family: sans-serif;
     margin: 0;
 }
 nav {
+    padding: 5px;
     height: 20px;
     display: flex;
     align-items: center;
@@ -14,6 +14,11 @@ nav {
     user-select: none;
 }
 
+.left-nav {
+    cursor: default;
+    -webkit-app-region: no-drag;
+}
+
 .rigth-nav {
     font-size: 25px;
     cursor: default;
@@ -21,23 +26,32 @@ nav {
 }
 
 .minimize-nav{
-    padding-top: auto;
-    padding-bottom: auto;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 4px;
+    padding-right: 4px;
+    color: #c5c5c5;
 }
 
 .minimize-nav:hover {
-    background-color: #3e404a;
+    color: #f8f8f2;
 }
 
 .close-nav{
-    padding-top: auto;
-    padding-bottom: auto;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 4px;
+    padding-right: 4px;
+    color: #c5c5c5;
 }
 
 .close-nav:hover {
-    background-color: #d51325;
+    color: #f8f8f2;
+}
+
+.btn-nav {
+    font-size: 14px;
+    padding-left: 6px;
+    padding-right: 6px;
+    color: #c5c5c5;
+}
+
+.btn-nav:hover{
+    color: #f8f8f2;
 }
