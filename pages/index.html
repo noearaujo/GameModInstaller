@@ -5,12 +5,29 @@
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
     <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <link rel="stylesheet" href="../styles/styles.css"/>
     <title>Hello World!</title>
   </head>
   <body>
+    <nav>
+      <div class="left-nav">
+        <span class="minimize-nav">APP</span>
+        <span class="close-nav">Doar</span>
+      </div>
+      <div class="title-nav">
+        Game Mod Installer
+      </div>
+      <div class="rigth-nav">
+        <span class="minimize-nav" id="minimizeBtn">&minus;</span>
+        <span class="close-nav" id="closeBtn">&times;</span>
+      </div>
+    </nav>
+
     <h1>Hello World!</h1>
     Estamos utilizando Node.js <span id="node-version"></span>,
     Chromium <span id="chrome-version"></span>,
     e Electron <span id="electron-version"></span>.
+
+    <script src="../window/titlebar.js" defer type="module"></script>
   </body>
 </html>
