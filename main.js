@@ -2,8 +2,8 @@ const {app, BrowserWindow, ipcMain, screen } = require('electron');
 const path = require('path');
 const { stringify } = require('querystring');
 
-const codeStringIngmageRestore = `maximazeRestoreBtn.style.backgroundImage = "url(../images/icons/restore_down.svg)";`;
-const codeStringIngmageMaximize = `maximazeRestoreBtn.style.backgroundImage = "url(../images/icons/maximize.svg)";`;
+const codeStringImageRestore = `maximazeRestoreBtn.style.backgroundImage = "url(../images/icons/restore_down.svg)";`;
+const codeStringImageMaximize = `maximazeRestoreBtn.style.backgroundImage = "url(../images/icons/maximize.svg)";`;
 
 var windowSizeRestore = {};
 var estarMaximizado = true;
@@ -39,7 +39,7 @@ function TitleBarManeger(ipcMain, win){
             console.log("moving the window");
             win.setResizable(true);
             estarMaximizado=false;
-            win.webContents.executeJavaScript(codeStringIngmageMaximize, function (result){console.log(result);});
+            win.webContents.executeJavaScript(codeStringImageMaximize, function (result){console.log(result);});
         }
     })
 
@@ -54,7 +54,7 @@ function TitleBarManeger(ipcMain, win){
             win.setBounds(windowSizeRestore);
             win.setResizable(true);
             estarMaximizado = false;
-            win.webContents.executeJavaScript(codeStringIngmageMaximize, function (result){console.log(result);});
+            win.webContents.executeJavaScript(codeStringImageMaximize, function (result){console.log(result);});
             console.log("Window restored");
         }
         else{
@@ -67,7 +67,7 @@ function TitleBarManeger(ipcMain, win){
             win.setBounds(screenWorkArea);
             win.setResizable(false);
             estarMaximizado = true;
-            win.webContents.executeJavaScript(codeStringIngmageRestore, function (result){console.log(result);});
+            win.webContents.executeJavaScript(codeStringImageRestore, function (result){console.log(result);});
             //win.setBounds({ x: 440, y: 225, width: 800, height: 600 });
             //win.maximize();
             console.log("window maximized");
