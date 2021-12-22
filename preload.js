@@ -14,7 +14,8 @@ window.addEventListener('DOMContentLoaded', () => {
 const API = {
     window: {
         close: () => ipcRenderer.send("closeApp"),
-        minimize: () => ipcRenderer.send("minimizeApp")
+        minimize: () => ipcRenderer.send("minimizeApp"),
+        maxirestore: () => ipcRenderer.send("maximazeRestoreApp")
     }
 }
 
