@@ -6,7 +6,7 @@ const codeStringIngmageRestore = `maximazeRestoreBtn.style.backgroundImage = "ur
 const codeStringIngmageMaximize = `maximazeRestoreBtn.style.backgroundImage = "url(../images/icons/maximize.svg)";`;
 
 var windowSizeRestore = {};
-var estaMaximizado = true;
+var estarMaximizado = true;
 
 const createWindow = (bound) => {
     const win = new BrowserWindow({
@@ -33,13 +33,15 @@ const createWindow = (bound) => {
 
 function TitleBarManeger(ipcMain, win){
     win.on("move", function (event){
-        if (estaMaximizado){
+        let estarMinimizado = win.isMinimized();
+        
+        if (estarMaximizado && !estarMinimizado){
+            console.log("moving the window");
             win.setResizable(true);
-            estaMaximizado=false;
+            estarMaximizado=false;
             win.webContents.executeJavaScript(codeStringIngmageMaximize, function (result){console.log(result);});
         }
-        //console.log("moving the window");
-    });
+    })
 
     ipcMain.on("minimizeApp", () => {
         console.log("minimizando a janela");
@@ -47,11 +49,11 @@ function TitleBarManeger(ipcMain, win){
     })
 
     ipcMain.on("maximazeRestoreApp", () => {
-        if(estaMaximizado){
+        if(estarMaximizado){
             //win.restore();
             win.setBounds(windowSizeRestore);
             win.setResizable(true);
-            estaMaximizado = false;
+            estarMaximizado = false;
             win.webContents.executeJavaScript(codeStringIngmageMaximize, function (result){console.log(result);});
             console.log("Window restored");
         }
@@ -64,7 +66,7 @@ function TitleBarManeger(ipcMain, win){
             let screenWorkArea = getDisplayPoint.workArea;
             win.setBounds(screenWorkArea);
             win.setResizable(false);
-            estaMaximizado = true;
+            estarMaximizado = true;
             win.webContents.executeJavaScript(codeStringIngmageRestore, function (result){console.log(result);});
             //win.setBounds({ x: 440, y: 225, width: 800, height: 600 });
             //win.maximize();
